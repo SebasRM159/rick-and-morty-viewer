@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { fetchCharacters } from './services/api';
 import './styles/App.css'; 
+import Filter from './components/Filter';
+import { Card } from './components/Card';
+
 function App() {
   const [characters, setCharacters] = useState([]);
 
-
+  // Filter characters based on input
+  const [filter, setFilter] = useState('');  
+  const filteredCharacters = characters.filter(character =>
+  character.name.toLowerCase().includes(filter.toLowerCase())
+  );
+  
 // Persisting votes in localStorage  
 useEffect(() => {
   if (characters.length > 0) {
@@ -22,30 +30,27 @@ useEffect(() => {
   }
 }, []);
 
+// Function to handle voting
 const handleVote = (id, value) => {
     setCharacters(characters.map(char => 
       char.id === id ? { ...char, score: (char.score || 0) + value } : char
     ));
   };  
 
+
+
   return (
    
     <div className="app">
       <h1>Rick and Morty Characters</h1>
+      <Filter onFilter={setFilter}/>
       <div className="characters-grid">
-        {characters.map((character) => (
-          <div key={character.id} className="character-card">
-            <img src={character.image} alt={character.name} />
-            <h3>{character.name}</h3>
-            <p>Status: {character.status}</p>
-            <p>Species: {character.species}</p>
-            <div className="vote-buttons">
-              <button onClick={() => handleVote(character.id, 1)}>👍 Like</button>
-              <button onClick={() => handleVote(character.id, -1)}>👎 Dislike</button>
-              <p>Score: {character.score || 0}</p>
-            </div>
-          </div>
-
+        {filteredCharacters.map((character) => (
+          <Card 
+            key={character.id} 
+            character={character} 
+            onVote={handleVote}
+          />
         ))}
       </div>
     </div>

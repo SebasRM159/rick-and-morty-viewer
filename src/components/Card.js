@@ -1,4 +1,5 @@
-const Card = ({ character }) => {
+import React, { useState, useEffect } from 'react';
+export const Card = ({ character }) => {
     const [score, setScore] = useState(0);
   return (
   <div className="character-card">
