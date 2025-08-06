@@ -5,13 +5,13 @@ Aplicación web que consume la API pública de Rick and Morty para mostrar perso
 
 ## Instrucciones para ejecutar la app
 1. Clona el repositorio:
-    1. git clone [URL-del-repositorio]
-    2. cd direccion del repositorio
+    a. git clone [URL-del-repositorio]
+    b. cd direccion del repositorio
    Instala dependencias:
-    1. npm install
-    2. npm start
+    a. npm install
+    b. npm start
    Inicia la aplicación:
-    1. Abrir http://localhost:3000 en navegador
+    a. Abrir http://localhost:3000 en navegador
 
 ## Cómo se consumió la API
 - Endpoint utilizado: https://rickandmortyapi.com/api/character
