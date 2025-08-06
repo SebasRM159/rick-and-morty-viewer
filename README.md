@@ -1,6 +1,11 @@
-Sebastian Ramirez Muñoz 
+# Rick and Morty Character Viewer
 
--Descripción del proyecto.
--Pasos para ejecutarlo (npm install, npm start).
--Estructura de archivos.
--Funcionalidades implementadas.
+## Features
+- Muestra personajes en grid
+- Sistema de votos (like/dislike)
+- Persistencia con localStorage
+- Filtrado por nombre
+
+## Cómo ejecutar
+1. `npm install`
+2. `npm start`

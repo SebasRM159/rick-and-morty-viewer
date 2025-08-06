@@ -44,6 +44,9 @@ const handleVote = (id, value) => {
     <div className="app">
       <h1>Rick and Morty Characters</h1>
       <Filter onFilter={setFilter}/>
+      {filteredCharacters.length === 0 && (
+        <p>No se encontraron personajes.</p>
+      )}
       <div className="characters-grid">
         {filteredCharacters.map((character) => (
           <Card 
