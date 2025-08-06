@@ -1,23 +1,26 @@
 import logo from './logo.svg';
-import './App.css';
+import { fetchCharacters } from './services/api';
 import './styles/App.css'; 
 function App() {
+  const [characters, setCharacters] = useState([]);
+
+useEffect(() => {
+    fetchCharacters().then(data => setCharacters(data));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>Rick and Morty Characters</h1>
+      <div className="characters-grid">
+        {characters.map((character) => (
+          <div key={character.id} className="character-card">
+            <img src={character.image} alt={character.name} />
+            <h3>{character.name}</h3>
+            <p>Status: {character.status}</p>
+            <p>Species: {character.species}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
