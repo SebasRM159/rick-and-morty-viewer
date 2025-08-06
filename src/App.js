@@ -4,9 +4,23 @@ import './styles/App.css';
 function App() {
   const [characters, setCharacters] = useState([]);
 
+
+// Persisting votes in localStorage  
 useEffect(() => {
+  if (characters.length > 0) {
+    localStorage.setItem('charactersVotes', JSON.stringify(characters));
+  }
+}, [characters]);
+
+// Load votes from localStorage on initial render
+useEffect(() => {
+  const savedVotes = localStorage.getItem('charactersVotes');
+  if (savedVotes) {
+    setCharacters(JSON.parse(savedVotes));
+  } else {
     fetchCharacters().then(data => setCharacters(data));
-  }, []);
+  }
+}, []);
 
 const handleVote = (id, value) => {
     setCharacters(characters.map(char => 
@@ -31,6 +45,7 @@ const handleVote = (id, value) => {
               <p>Score: {character.score || 0}</p>
             </div>
           </div>
+
         ))}
       </div>
     </div>
