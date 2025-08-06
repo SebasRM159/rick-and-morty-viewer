@@ -6,7 +6,7 @@ Aplicación web que consume la API pública de Rick and Morty para mostrar perso
 ## Instrucciones para ejecutar la app
 1. Clona el repositorio:
     1. git clone [URL-del-repositorio]
-    2. cd nombre-del-repositorio
+    2. cd direccion del repositorio
    Instala dependencias:
     1. npm install
     2. npm start
